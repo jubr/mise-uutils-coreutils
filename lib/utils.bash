@@ -119,7 +119,7 @@ install_version() {
 
     # Verify executable
     test -x "$install_path/bin/$TOOL_NAME" || fail "Expected $install_path/bin/$TOOL_NAME to be executable."
-    $install_path/bin/$TOOL_NAME | grep '(multi-call binary)' || fail "Expected $install_path/bin/$TOOL_NAME output to contain '(multi-call binary)'."
+    $install_path/bin/$TOOL_NAME --version | grep '(multi-call binary)' || fail "Expected $install_path/bin/$TOOL_NAME output to contain '(multi-call binary)'."
 
     for applet in $("$install_path/bin/$TOOL_NAME" --list); do
       ln -s coreutils "$install_path/bin/$applet"
